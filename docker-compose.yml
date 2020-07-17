@@ -1,0 +1,15 @@
+version: '3.7'
+
+services:
+  imapapi:
+    image: 'imapapi:${DOCKER_TAG:-latest}'
+    build: '.'
+    restart: always
+    ports:
+      - 3000:3000
+    depends_on:
+      - redis
+
+  redis:
+    image: 'redis:buster'
+    restart: always
